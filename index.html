@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio pribadi Muh. Dhion. R — Mahasiswa S1 Sistem Informasi yang passionate di bidang pengembangan web, analisis sistem, dan teknologi informasi." />
+  <meta name="keywords" content="portfolio, sistem informasi, web developer, mahasiswa, teknologi informasi" />
+  <meta name="author" content="Muh. Dhion. R" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Muh. Dhion. R — Portfolio" />
+  <meta property="og:description" content="Mahasiswa S1 Sistem Informasi | Web Developer | Tech Enthusiast" />
+  <meta property="og:type" content="website" />
+
+  <title>Muh. Dhion. R — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar__container">
+
+      <!-- Logo / Brand -->
+      <a href="#home" class="navbar__logo" aria-label="Kembali ke halaman utama">
+        <span class="navbar__logo-name">DHION</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar__nav" role="navigation" aria-label="Navigasi utama">
+        <ul class="navbar__list" role="list">
+          <li><a href="#home"      class="navbar__link" data-section="home">Beranda</a></li>
+          <li><a href="#about"     class="navbar__link" data-section="about">Tentang</a></li>
+          <li><a href="#skills"    class="navbar__link" data-section="skills">Keahlian</a></li>
+          <li><a href="#projects"  class="navbar__link" data-section="projects">Proyek</a></li>
+          <li><a href="#education" class="navbar__link" data-section="education">Pendidikan</a></li>
+          <li><a href="#contact"   class="navbar__link" data-section="contact">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Controls: Theme Toggle + Hamburger -->
+      <div class="navbar__controls">
+        <!-- Theme Toggle -->
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle dark/light mode"
+          title="Toggle tema"
+        >
+          <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__icon theme-toggle__icon--sun"  aria-hidden="true">☀️</span>
+        </button>
+
+        <!-- Hamburger Menu -->
+        <button
+          class="navbar__hamburger"
+          id="hamburger"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span class="navbar__hamburger-line" aria-hidden="true"></span>
+          <span class="navbar__hamburger-line" aria-hidden="true"></span>
+          <span class="navbar__hamburger-line" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="navbar__mobile" id="mobileMenu" role="dialog" aria-label="Menu mobile" aria-hidden="true">
+      <nav>
+        <ul class="navbar__mobile-list" role="list">
+          <li><a href="#home"      class="navbar__mobile-link" data-section="home">Beranda</a></li>
+          <li><a href="#about"     class="navbar__mobile-link" data-section="about">Tentang</a></li>
+          <li><a href="#skills"    class="navbar__mobile-link" data-section="skills">Keahlian</a></li>
+          <li><a href="#projects"  class="navbar__mobile-link" data-section="projects">Proyek</a></li>
+          <li><a href="#education" class="navbar__mobile-link" data-section="education">Pendidikan</a></li>
+          <li><a href="#contact"   class="navbar__mobile-link" data-section="contact">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="home" aria-label="Halaman utama">
+    <div class="hero__bg-grid" aria-hidden="true"></div>
+    <div class="hero__container">
+
+      <!-- Text Content -->
+      <div class="hero__content" data-reveal>
+        <p class="hero__greeting">Halo, Saya 👋</p>
+        <h1 class="hero__name">Muh. Dhion. R</h1>
+
+        <!-- Typing Animation Container -->
+        <div class="hero__role-wrapper" aria-live="polite" aria-atomic="true">
+          <span class="hero__role-prefix">Saya seorang </span>
+          <span class="hero__role-typed" id="typedText" aria-label="Profesi saya"></span>
+          <span class="hero__cursor" aria-hidden="true">|</span>
+        </div>
+
+        <p class="hero__description">
+          Mahasiswa Sistem Informasi yang antusias dalam pengembangan web,
+          analisis sistem, dan inovasi teknologi informasi. Berkomitmen untuk
+          terus belajar dan berkontribusi di dunia teknologi.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#projects" class="btn btn--primary">
+            <span>Lihat Proyek Saya</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn--outline">
+            <span>Hubungi Saya</span>
+          </a>
+        </div>
+
+        <!-- Social Quick Links -->
+        <div class="hero__socials">
+          <a href="https://github.com/Dhion022" target="_blank" rel="noopener noreferrer" class="hero__social-link" aria-label="GitHub profile">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="mailto:dhion@gmail.com" class="hero__social-link" aria-label="Kirim email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Profile Photo -->
+      <div class="hero__photo-wrapper" data-reveal data-delay="200">
+        <div class="hero__photo-ring" aria-hidden="true"></div>
+        <div class="hero__photo-container">
+          <!--
+            GANTI FOTO: ubah src="assets/dhion.png" menjadi path foto Anda.
+            Contoh: src="assets/foto-saya.jpg"
+            Foto ideal: square (1:1), minimum 400x400px, format JPG/PNG/WebP.
+          -->
+          <img
+            src="assets/dhion.png"
+            alt="Foto profil Muh. Dhion. R"
+            class="hero__photo"
+            id="profilePhoto"
+            loading="eager"
+            onerror="this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';"
+          />
+          <!-- Placeholder jika foto belum tersedia -->
+          <div class="hero__photo-placeholder" id="photoPlaceholder" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+        <!-- Decorative dots -->
+        <div class="hero__dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <a href="#about" class="hero__scroll-indicator" aria-label="Scroll ke section About">
+      <span class="hero__scroll-text">Gulir ke Bawah</span>
+      <span class="hero__scroll-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </span>
+    </a>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section class="about section" id="about" aria-label="Tentang saya">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label">Kenali Saya</span>
+        <h2 class="section-title">Tentang Saya</h2>
+      </div>
+
+      <div class="about__grid">
+        <!-- About Text -->
+        <div class="about__content" data-reveal>
+          <p class="about__text">
+            Halo! Saya <strong>Muh. Dhion. R</strong>, mahasiswa aktif program studi
+            <strong>S1 Sistem Informasi</strong> di <strong>Universitas Sembilanbelas November Kolaka</strong>.
+            Saya memiliki ketertarikan yang kuat dalam dunia teknologi informasi,
+            khususnya di bidang pengembangan web dan analisis sistem.
+          </p>
+          <p class="about__text">
+            Selama menempuh pendidikan, saya terus mengasah kemampuan dalam
+            pemrograman, desain basis data, dan pengembangan antarmuka pengguna.
+            Saya percaya bahwa teknologi adalah alat yang tepat untuk memecahkan
+            masalah nyata dan menciptakan dampak positif.
+          </p>
+          <p class="about__text">
+            Di luar akademik, saya aktif mengeksplorasi proyek-proyek mandiri
+            untuk memperdalam pemahaman teknis saya. Tujuan saya adalah menjadi
+            seorang profesional di bidang teknologi yang dapat berkontribusi
+            secara nyata bagi masyarakat dan industri.
+          </p>
+
+          <!-- Info Cards -->
+          <div class="about__info-grid">
+            <div class="about__info-item">
+              <span class="about__info-label">Status</span>
+              <span class="about__info-value">Mahasiswa Aktif</span>
+            </div>
+            <div class="about__info-item">
+              <span class="about__info-label">Program Studi</span>
+              <span class="about__info-value">S1 Sistem Informasi</span>
+            </div>
+            <div class="about__info-item">
+              <span class="about__info-label">Universitas</span>
+              <span class="about__info-value">Universitas Sembilanbelas November Kolaka</span>
+            </div>
+            <div class="about__info-item">
+              <span class="about__info-label">Lokasi</span>
+              <span class="about__info-value">Kolaka, Indonesia</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn--primary about__cta">
+            <span>Mari Terhubung</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- About Stats -->
+        <div class="about__stats" data-reveal data-delay="150">
+          <div class="about__stat-card">
+            <span class="about__stat-number" data-count="3">0</span>
+            <span class="about__stat-label">Proyek Selesai</span>
+          </div>
+          <div class="about__stat-card">
+            <span class="about__stat-number" data-count="5">0</span>
+            <span class="about__stat-label">Teknologi Dipelajari</span>
+          </div>
+          <div class="about__stat-card">
+            <span class="about__stat-number" data-count="2">0</span>
+            <span class="about__stat-label">Sertifikasi</span>
+          </div>
+          <div class="about__stat-card">
+            <span class="about__stat-number" data-count="1">0</span>
+            <span class="about__stat-label">Organisasi Aktif</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS SECTION
+  ============================================================ -->
+  <section class="skills section section--alt" id="skills" aria-label="Kemampuan saya">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label">Yang Saya Kuasai</span>
+        <h2 class="section-title">Keahlian</h2>
+      </div>
+
+      <div class="skills__grid">
+
+        <!-- Group 1: Programming & Web Dev -->
+        <div class="skills__group" data-reveal>
+          <div class="skills__group-header">
+            <span class="skills__group-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </span>
+            <h3 class="skills__group-title">Pemrograman &amp; Web Dev</h3>
+          </div>
+          <ul class="skills__list" role="list">
+            <li class="skill-item">
+              <div class="skill-item__header">
+                <span class="skill-item__name">HTML5</span>
+                <!-- Ganti nilai data-level (0–100) sesuai kemampuan Anda -->
+                <span class="skill-item__level">Menengah</span>
+              </div>
+              <div class="skill-item__bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="HTML5 skill level">
+                <div class="skill-item__fill" data-level="70"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item__header">
+                <span class="skill-item__name">CSS3</span>
+                <span class="skill-item__level">Menengah</span>
+              </div>
+              <div class="skill-item__bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 skill level">
+                <div class="skill-item__fill" data-level="65"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item__header">
+                <span class="skill-item__name">JavaScript</span>
+                <span class="skill-item__level">Pemula</span>
+              </div>
+              <div class="skill-item__bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript skill level">
+                <div class="skill-item__fill" data-level="50"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Group 2: Information Systems -->
+        <div class="skills__group" data-reveal data-delay="100">
+          <div class="skills__group-header">
+            <span class="skills__group-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </span>
+            <h3 class="skills__group-title">Sistem Informasi</h3>
+          </div>
+          <ul class="skills__list" role="list">
+            <li class="skill-item">
+              <div class="skill-item__header">
+            <span class="skill-item__name">Analisis Sistem</span>
+                <span class="skill-item__level">Menengah</span>
+              </div>
+              <div class="skill-item__bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="System Analysis skill level">
+                <div class="skill-item__fill" data-level="65"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item__header">
+                <span class="skill-item__name">Manajemen Basis Data</span>
+                <span class="skill-item__level">Menengah</span>
+              </div>
+              <div class="skill-item__bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Database Management skill level">
+                <div class="skill-item__fill" data-level="60"></div>
+              </div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item__header">
+                <span class="skill-item__name">Konsep Sistem Informasi</span>
+                <span class="skill-item__level">Menengah</span>
+              </div>
+              <div class="skill-item__bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Information Systems Concepts skill level">
+                <div class="skill-item__fill" data-level="70"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Group 3: Tools & Software -->
+        <div class="skills__group" data-reveal data-delay="200">
+          <div class="skills__group-header">
+            <span class="skills__group-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </span>
+            <h3 class="skills__group-title">Alat &amp; Perangkat Lunak</h3>
+          </div>
+          <ul class="skills__tools-grid" role="list">
+            <li class="skill-tool">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+              <span>VS Code</span>
+            </li>
+            <li class="skill-tool">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>Git &amp; GitHub</span>
+            </li>
+            <li class="skill-tool">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <span>MS Office</span>
+            </li>
+            <li class="skill-tool">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <span>MySQL</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS SECTION
+  ============================================================ -->
+  <section class="projects section" id="projects" aria-label="Proyek saya">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label">Yang Telah Saya Buat</span>
+        <h2 class="section-title">Proyek</h2>
+      </div>
+
+      <div class="projects__grid">
+
+        <!-- Project Card 1 -->
+        <!-- PLACEHOLDER: Ganti semua [PLACEHOLDER] dengan data proyek Anda -->
+        <article class="project-card" data-reveal>
+          <div class="project-card__image-wrapper">
+            <!--
+              Ganti src dengan path thumbnail proyek Anda.
+              Contoh: src="assets/project1.jpg"
+            -->
+            <img
+              src="assets/project1.jpg"
+              alt="Screenshot proyek [NAMA PROYEK 1]"
+              class="project-card__image"
+              loading="lazy"
+              onerror="this.parentElement.innerHTML = '<div class=\'project-card__image-fallback\' aria-hidden=\'true\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><path d=\'M3 9h18M9 21V9\'/></svg><span>[PROJECT THUMBNAIL]</span></div>'"
+            />
+            <div class="project-card__overlay" aria-hidden="true"></div>
+            <span class="project-card__badge">Akademik</span>
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">[NAMA PROYEK 1]</h3>
+            <p class="project-card__desc">
+              [DESKRIPSI PROYEK 1 — contoh: Aplikasi manajemen inventaris berbasis web
+              yang dikembangkan sebagai proyek akhir mata kuliah Pemrograman Web.
+              Menampilkan fitur CRUD dan autentikasi pengguna.]
+            </p>
+            <div class="project-card__tags" role="list" aria-label="Teknologi yang digunakan">
+              <span class="project-card__tag" role="listitem">HTML</span>
+              <span class="project-card__tag" role="listitem">CSS</span>
+              <span class="project-card__tag" role="listitem">JavaScript</span>
+            </div>
+            <div class="project-card__actions">
+              <a href="#" class="btn btn--sm btn--primary" aria-label="Lihat detail proyek [NAMA PROYEK 1]">View Details</a>
+              <a href="https://github.com/[USERNAME]/[REPO-1]" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost" aria-label="Lihat kode di GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 -->
+        <article class="project-card" data-reveal data-delay="100">
+          <div class="project-card__image-wrapper">
+            <img
+              src="assets/project2.jpg"
+              alt="Screenshot proyek [NAMA PROYEK 2]"
+              class="project-card__image"
+              loading="lazy"
+              onerror="this.parentElement.innerHTML = '<div class=\'project-card__image-fallback\' aria-hidden=\'true\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><path d=\'M3 9h18M9 21V9\'/></svg><span>[PROJECT THUMBNAIL]</span></div>'"
+            />
+            <div class="project-card__overlay" aria-hidden="true"></div>
+            <span class="project-card__badge project-card__badge--personal">Personal</span>
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">[NAMA PROYEK 2]</h3>
+            <p class="project-card__desc">
+              [DESKRIPSI PROYEK 2 — contoh: Sistem informasi perpustakaan sederhana
+              dengan fitur pencarian buku, peminjaman, dan pengelolaan data anggota
+              menggunakan MySQL sebagai basis data.]
+            </p>
+            <div class="project-card__tags" role="list" aria-label="Teknologi yang digunakan">
+              <span class="project-card__tag" role="listitem">HTML</span>
+              <span class="project-card__tag" role="listitem">MySQL</span>
+              <span class="project-card__tag" role="listitem">CSS</span>
+            </div>
+            <div class="project-card__actions">
+              <a href="#" class="btn btn--sm btn--primary" aria-label="Lihat detail proyek [NAMA PROYEK 2]">View Details</a>
+              <a href="https://github.com/[USERNAME]/[REPO-2]" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost" aria-label="Lihat kode di GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 3 -->
+        <article class="project-card" data-reveal data-delay="200">
+          <div class="project-card__image-wrapper">
+            <img
+              src="assets/project3.jpg"
+              alt="Screenshot proyek [NAMA PROYEK 3]"
+              class="project-card__image"
+              loading="lazy"
+              onerror="this.parentElement.innerHTML = '<div class=\'project-card__image-fallback\' aria-hidden=\'true\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><path d=\'M3 9h18M9 21V9\'/></svg><span>[PROJECT THUMBNAIL]</span></div>'"
+            />
+            <div class="project-card__overlay" aria-hidden="true"></div>
+            <span class="project-card__badge">Akademik</span>
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">[NAMA PROYEK 3]</h3>
+            <p class="project-card__desc">
+              [DESKRIPSI PROYEK 3 — contoh: Dashboard analitik data penjualan
+              menggunakan visualisasi data interaktif untuk keperluan pengambilan
+              keputusan bisnis dalam studi kasus.]
+            </p>
+            <div class="project-card__tags" role="list" aria-label="Teknologi yang digunakan">
+              <span class="project-card__tag" role="listitem">JavaScript</span>
+              <span class="project-card__tag" role="listitem">CSS</span>
+              <span class="project-card__tag" role="listitem">HTML</span>
+            </div>
+            <div class="project-card__actions">
+              <a href="#" class="btn btn--sm btn--primary" aria-label="Lihat detail proyek [NAMA PROYEK 3]">View Details</a>
+              <a href="https://github.com/[USERNAME]/[REPO-3]" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost" aria-label="Lihat kode di GitHub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EDUCATION SECTION
+  ============================================================ -->
+  <section class="education section section--alt" id="education" aria-label="Riwayat pendidikan">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label">Latar Belakang</span>
+        <h2 class="section-title">Pendidikan</h2>
+      </div>
+
+      <div class="education__wrapper">
+        <!-- Timeline line -->
+        <div class="education__timeline-line" aria-hidden="true"></div>
+
+        <!-- Pendidikan Dasar -->
+        <div class="education__item" data-reveal>
+          <div class="education__dot" aria-hidden="true"></div>
+          <div class="education__card">
+            <div class="education__card-header">
+              <div class="education__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <h3 class="education__degree">Sekolah Dasar (SD)</h3>
+                <p class="education__institution">SDN 1 Longori</p>
+              </div>
+            </div>
+            <div class="education__meta">
+              <span class="education__period">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                2010 — 2016
+              </span>
+              <span class="education__status" style="background:rgba(0,212,255,0.1);color:var(--color-accent);border-color:rgba(0,212,255,0.25);">Lulus</span>
+            </div>
+            <p class="education__desc">
+              Menempuh pendidikan dasar di SDN 1 Longori dan membangun fondasi
+              akademik yang kuat sebagai bekal untuk jenjang pendidikan selanjutnya.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pendidikan Menengah Pertama -->
+        <div class="education__item" data-reveal data-delay="100">
+          <div class="education__dot" aria-hidden="true"></div>
+          <div class="education__card">
+            <div class="education__card-header">
+              <div class="education__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <h3 class="education__degree">Sekolah Menengah Pertama (SMP)</h3>
+                <p class="education__institution">SMP Negeri 1 Pomalaa</p>
+              </div>
+            </div>
+            <div class="education__meta">
+              <span class="education__period">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                2016 — 2019
+              </span>
+              <span class="education__status" style="background:rgba(0,212,255,0.1);color:var(--color-accent);border-color:rgba(0,212,255,0.25);">Lulus</span>
+            </div>
+            <p class="education__desc">
+              Menempuh pendidikan menengah pertama di SMP Negeri 1 Pomalaa dan
+              mengembangkan kemampuan berpikir analitis serta minat awal di bidang
+              ilmu pengetahuan dan teknologi.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pendidikan Menengah Kejuruan -->
+        <div class="education__item" data-reveal data-delay="200">
+          <div class="education__dot" aria-hidden="true"></div>
+          <div class="education__card">
+            <div class="education__card-header">
+              <div class="education__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <h3 class="education__degree">Sekolah Menengah Kejuruan (SMK)</h3>
+                <p class="education__institution">SMK Negeri 1 Baula</p>
+                <p class="education__institution" style="font-size:var(--text-sm);color:var(--color-text-secondary);margin-top:2px;">Jurusan Teknik Electronic Audio Video</p>
+              </div>
+            </div>
+            <div class="education__meta">
+              <span class="education__period">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                2019 — 2022
+              </span>
+              <span class="education__status" style="background:rgba(0,212,255,0.1);color:var(--color-accent);border-color:rgba(0,212,255,0.25);">Lulus</span>
+            </div>
+            <p class="education__desc">
+              Menempuh pendidikan kejuruan di SMK Negeri 1 Baula dan memperoleh
+              keterampilan teknis yang relevan sebagai bekal memasuki dunia kerja
+              maupun melanjutkan studi ke perguruan tinggi.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pendidikan Tinggi -->
+        <div class="education__item" data-reveal data-delay="300">
+          <div class="education__dot" aria-hidden="true"></div>
+          <div class="education__card">
+            <div class="education__card-header">
+              <div class="education__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <h3 class="education__degree">Sarjana Sistem Informasi (S1)</h3>
+                <p class="education__institution">Universitas Sembilanbelas November Kolaka</p>
+              </div>
+            </div>
+            <div class="education__meta">
+              <span class="education__period">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                2022 — Sekarang
+              </span>
+              <span class="education__status">Aktif</span>
+            </div>
+            <p class="education__desc">
+              Mempelajari berbagai aspek sistem informasi meliputi analisis dan
+              perancangan sistem, pengembangan perangkat lunak, manajemen basis data,
+              keamanan informasi, dan manajemen proyek teknologi informasi.
+            </p>
+            <ul class="education__highlights" aria-label="Highlight pendidikan">
+              <li>Mata kuliah relevan: Pemrograman Web, Basis Data, Analisis Sistem</li>
+              <li>IPK: [X.XX / 4.00]</li>
+              <li>Aktif dalam kegiatan akademik dan organisasi kampus</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE & CERTIFICATIONS SECTION
+  ============================================================ -->
+  <section class="experience section" id="experience" aria-label="Pengalaman dan sertifikasi">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label">My Journey</span>
+        <h2 class="section-title">Pengalaman &amp; Sertifikasi</h2>
+      </div>
+
+      <div class="experience__grid">
+
+        <!-- Experience Column -->
+        <div class="experience__column" data-reveal>
+          <h3 class="experience__column-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Pengalaman
+          </h3>
+
+          <!-- Experience Item — PLACEHOLDER -->
+          <div class="experience__item">
+            <div class="experience__item-dot" aria-hidden="true"></div>
+            <div class="experience__item-content">
+              <h4 class="experience__item-title">[NAMA POSISI / JABATAN]</h4>
+              <p class="experience__item-org">[NAMA ORGANISASI / KEPANITIAAN]</p>
+              <span class="experience__item-period">[BULAN TAHUN] — [BULAN TAHUN]</span>
+              <p class="experience__item-desc">
+                [Deskripsikan peran dan tanggung jawab Anda. Contoh: Bertanggung jawab
+                dalam koordinasi anggota divisi teknologi, membantu pengelolaan sistem
+                informasi organisasi, dan menjadi penanggung jawab dokumentasi kegiatan.]
+              </p>
+            </div>
+          </div>
+
+          <!-- Tambah item pengalaman lainnya di sini -->
+          <div class="experience__item">
+            <div class="experience__item-dot" aria-hidden="true"></div>
+            <div class="experience__item-content">
+              <h4 class="experience__item-title">[NAMA POSISI / JABATAN 2]</h4>
+              <p class="experience__item-org">[NAMA ORGANISASI / KEPANITIAAN 2]</p>
+              <span class="experience__item-period">[BULAN TAHUN] — [BULAN TAHUN]</span>
+              <p class="experience__item-desc">
+                [Deskripsi peran dan kontribusi Anda pada kegiatan/organisasi ini.]
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Certifications Column -->
+        <div class="experience__column" data-reveal data-delay="150">
+          <h3 class="experience__column-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            Sertifikasi &amp; Pencapaian
+          </h3>
+
+          <!-- Cert Item — PLACEHOLDER -->
+          <div class="cert-item">
+            <div class="cert-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div class="cert-item__content">
+              <h4 class="cert-item__name">[NAMA SERTIFIKAT]</h4>
+              <p class="cert-item__issuer">[NAMA PENERBIT SERTIFIKAT]</p>
+              <span class="cert-item__date">[BULAN TAHUN]</span>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div class="cert-item__content">
+              <h4 class="cert-item__name">[NAMA SERTIFIKAT 2]</h4>
+              <p class="cert-item__issuer">[NAMA PENERBIT SERTIFIKAT 2]</p>
+              <span class="cert-item__date">[BULAN TAHUN]</span>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-item__icon cert-item__icon--achievement" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="cert-item__content">
+              <h4 class="cert-item__name">[NAMA PENCAPAIAN]</h4>
+              <p class="cert-item__issuer">[NAMA PENYELENGGARA]</p>
+              <span class="cert-item__date">[BULAN TAHUN]</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
+  <section class="contact section section--alt" id="contact" aria-label="Hubungi saya">
+    <div class="container">
+      <div class="section-header" data-reveal>
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title">Kontak Saya</h2>
+        <p class="section-subtitle">
+          Tertarik untuk berkolaborasi atau memiliki pertanyaan?
+          Jangan ragu untuk menghubungi saya.
+        </p>
+      </div>
+
+      <div class="contact__grid">
+
+        <!-- Contact Info -->
+        <div class="contact__info" data-reveal>
+          <div class="contact__info-card">
+            <a href="mailto:dhion@gmail.com" class="contact__info-item" aria-label="Kirim email ke dhion@gmail.com">
+              <div class="contact__info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+              </div>
+              <div>
+                <span class="contact__info-label">Email</span>
+                <span class="contact__info-value">dhion@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/Dhion022" target="_blank" rel="noopener noreferrer" class="contact__info-item" aria-label="Kunjungi profil GitHub">
+              <div class="contact__info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </div>
+              <div>
+                <span class="contact__info-label">GitHub</span>
+                <span class="contact__info-value">github.com/Dhion022</span>
+              </div>
+            </a>
+
+            <a href="https://instagram.com/dhion022" target="_blank" rel="noopener noreferrer" class="contact__info-item" aria-label="Kunjungi profil Instagram">
+              <div class="contact__info-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <div>
+                <span class="contact__info-label">Instagram</span>
+                <span class="contact__info-value">@dhion022</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact__form-wrapper" data-reveal data-delay="150">
+          <!--
+            CATATAN: Form ini menggunakan atribut action="mailto:..." sebagai fallback.
+            Ganti dhion@gmail.com pada atribut action jika ingin menggunakan email lain.
+            Untuk pengiriman form yang lebih andal di produksi, gunakan layanan seperti
+            Formspree (https://formspree.io) atau EmailJS.
+
+            Contoh Formspree: action="https://formspree.io/f/[YOUR_FORM_ID]" method="POST"
+          -->
+          <form
+            class="contact__form"
+            id="contactForm"
+            action="mailto:dhion@gmail.com"
+            method="POST"
+            enctype="text/plain"
+            novalidate
+            aria-label="Form kontak"
+          >
+            <div class="form-group">
+              <label for="contactName" class="form-label">Nama Lengkap <span aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="contactName"
+                name="nama"
+                class="form-input"
+                placeholder="Masukkan nama lengkap Anda"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="nameError"
+              />
+              <span class="form-error" id="nameError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="contactEmail"
+                name="email"
+                class="form-input"
+                placeholder="nama@email.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="emailError"
+              />
+              <span class="form-error" id="emailError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Pesan <span aria-hidden="true">*</span></label>
+              <textarea
+                id="contactMessage"
+                name="pesan"
+                class="form-input form-textarea"
+                placeholder="Tuliskan pesan Anda di sini..."
+                rows="5"
+                required
+                aria-required="true"
+                aria-describedby="messageError"
+              ></textarea>
+              <span class="form-error" id="messageError" role="alert" aria-live="polite"></span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+              <span class="btn__text">Kirim Pesan</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+
+            <!-- Success / Error Message -->
+            <div class="form-feedback" id="formFeedback" role="alert" aria-live="polite" aria-atomic="true"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__container">
+
+      <div class="footer__top">
+        <!-- Brand -->
+        <div class="footer__brand">
+          <a href="#home" class="navbar__logo footer__logo" aria-label="Kembali ke atas">
+            <span class="navbar__logo-name">DHION</span>
+          </a>
+          <p class="footer__tagline">Information Systems Student &amp; Tech Enthusiast</p>
+        </div>
+
+        <!-- Quick Nav -->
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <h4 class="footer__nav-title">Quick Links</h4>
+          <ul class="footer__nav-list" role="list">
+            <li><a href="#home"      class="footer__nav-link">Home</a></li>
+            <li><a href="#about"     class="footer__nav-link">About</a></li>
+            <li><a href="#skills"    class="footer__nav-link">Skills</a></li>
+            <li><a href="#projects"  class="footer__nav-link">Projects</a></li>
+            <li><a href="#education" class="footer__nav-link">Education</a></li>
+            <li><a href="#contact"   class="footer__nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Social Links -->
+        <div class="footer__socials">
+          <h4 class="footer__nav-title">Connect</h4>
+          <div class="footer__social-links">
+            <a href="https://github.com/Dhion022" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://instagram.com/dhion022" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="mailto:dhion@gmail.com" class="footer__social-link" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">
+          &copy; <span id="copyrightYear"></span> <strong>Muh. Dhion. R</strong>. All rights reserved.
+        </p>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Kembali ke atas halaman"
+    title="Back to top"
+    hidden
+  >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>

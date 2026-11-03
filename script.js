@@ -70,7 +70,7 @@ const ThemeManager = (() => {
     if (btn) {
       btn.setAttribute(
         'aria-label',
-        theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+        theme === 'dark' ? 'Beralih ke mode terang' : 'Beralih ke mode gelap'
       );
     }
   }
@@ -316,11 +316,11 @@ const ScrollRevealManager = (() => {
 const TypingAnimation = (() => {
   // Edit this array to change the typed roles
   const ROLES = [
-    'Information Systems Student',
-    'Web Developer',
-    'Tech Enthusiast',
-    'Problem Solver',
-    'System Analyst',
+    'Mahasiswa Sistem Informasi',
+    'Pengembang Web',
+    'Penggiat Teknologi',
+    'Pemecah Masalah',
+    'Analis Sistem',
   ];
 
   const TYPING_SPEED   = 80;   // ms per character (typing)
@@ -509,59 +509,130 @@ const CounterAnimator = (() => {
 
 
 /* ============================================================
-   9. CONTACT FORM
-   - Validates all fields before submission.
-   - Uses mailto: as the action (no backend required).
-   - Shows inline error messages and a success/error banner.
-   - For production: swap the form action to Formspree or EmailJS.
+   9. COMMENT SECTION & FORM
+   - Replaces send-message form with interactive comment system.
+   - Requires only: Name ("Nama") and Comment ("Komentar").
+   - Saves comments to localStorage with real-time rendering.
+   - Includes validation, anti-XSS sanitization, and timestamps.
 ============================================================ */
-const ContactFormManager = (() => {
+const CommentManager = (() => {
+  const STORAGE_KEY = 'dhion_portfolio_comments';
+
+  // Default starter comments if none exist in localStorage
+  const DEFAULT_COMMENTS = [
+    {
+      id: 'default-1',
+      name: 'Muh. Dhion. R',
+      isOwner: true,
+      text: 'Halo! Selamat datang di website portofolio saya. Silakan tinggalkan komentar, saran, atau sekadar menyapa di sini. Terima kasih sudah berkunjung!',
+      date: new Date(Date.now() - 24 * 60 * 60 * 1000 * 2).toISOString()
+    },
+    {
+      id: 'default-2',
+      name: 'Rian Pratama',
+      isOwner: false,
+      text: 'Portofolionya sangat rapi dan keren! Desainnya modern dan nyaman dilihat. Sukses selalu untuk perkuliahan di Sistem Informasi dan proyek ke depannya!',
+      date: new Date(Date.now() - 24 * 60 * 60 * 1000 * 1).toISOString()
+    }
+  ];
+
+  /* ---- Escape HTML to prevent XSS ---- */
+  function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  /* ---- Format date / relative time ---- */
+  function formatCommentDate(isoString) {
+    try {
+      const date = new Date(isoString);
+      const now = new Date();
+      const diffMs = now - date;
+      const diffMinutes = Math.floor(diffMs / (1000 * 60));
+      const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+      if (diffMinutes < 1) return 'Baru saja';
+      if (diffMinutes < 60) return `${diffMinutes} menit yang lalu`;
+      if (diffHours < 24) return `${diffHours} jam yang lalu`;
+      if (diffDays === 1) return 'Kemarin';
+      if (diffDays < 7) return `${diffDays} hari yang lalu`;
+
+      return date.toLocaleDateString('id-ID', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+    } catch {
+      return 'Baru saja';
+    }
+  }
+
+  /* ---- Storage helpers ---- */
+  function getComments() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (!data) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_COMMENTS));
+        return DEFAULT_COMMENTS;
+      }
+      const parsed = JSON.parse(data);
+      return Array.isArray(parsed) ? parsed : DEFAULT_COMMENTS;
+    } catch (e) {
+      console.warn('Storage access failed, using default comments:', e);
+      return DEFAULT_COMMENTS;
+    }
+  }
+
+  function saveComments(comments) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+    } catch (e) {
+      console.warn('Failed to save comments to localStorage:', e);
+    }
+  }
+
   /* ---- Validation rules ---- */
-
   function validateName(value) {
-    if (!value.trim()) return 'Nama tidak boleh kosong.';
-    if (value.trim().length < 2) return 'Nama minimal 2 karakter.';
-    if (value.trim().length > 100) return 'Nama terlalu panjang.';
+    const trimmed = value.trim();
+    if (!trimmed) return 'Nama tidak boleh kosong.';
+    if (trimmed.length < 2) return 'Nama minimal 2 karakter.';
+    if (trimmed.length > 50) return 'Nama terlalu panjang (maks 50 karakter).';
     return '';
   }
 
-  function validateEmail(value) {
-    if (!value.trim()) return 'Email tidak boleh kosong.';
-    // RFC 5322-inspired simple regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value.trim())) return 'Format email tidak valid.';
-    return '';
-  }
-
-  function validateMessage(value) {
-    if (!value.trim()) return 'Pesan tidak boleh kosong.';
-    if (value.trim().length < 10) return 'Pesan minimal 10 karakter.';
-    if (value.trim().length > 2000) return 'Pesan terlalu panjang (maks 2000 karakter).';
+  function validateComment(value) {
+    const trimmed = value.trim();
+    if (!trimmed) return 'Komentar tidak boleh kosong.';
+    if (trimmed.length < 3) return 'Komentar minimal 3 karakter.';
+    if (trimmed.length > 1000) return 'Komentar terlalu panjang (maks 1000 karakter).';
     return '';
   }
 
   /* ---- UI helpers ---- */
-
   function setFieldError(input, errorEl, message) {
     if (message) {
       input.classList.add('is-error');
       input.setAttribute('aria-invalid', 'true');
-      errorEl.textContent = message;
+      if (errorEl) errorEl.textContent = message;
     } else {
       input.classList.remove('is-error');
       input.removeAttribute('aria-invalid');
-      errorEl.textContent = '';
+      if (errorEl) errorEl.textContent = '';
     }
   }
 
   function showFeedback(feedbackEl, type, message) {
-    feedbackEl.className = 'form-feedback'; // reset classes
+    if (!feedbackEl) return;
+    feedbackEl.className = 'form-feedback';
     feedbackEl.classList.add(type === 'success' ? 'is-success' : 'is-error');
     feedbackEl.textContent = message;
     feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   function setSubmitLoading(btn, isLoading) {
+    if (!btn) return;
     const textEl = btn.querySelector('.btn__text');
     if (isLoading) {
       btn.disabled = true;
@@ -570,19 +641,61 @@ const ContactFormManager = (() => {
     } else {
       btn.disabled = false;
       btn.removeAttribute('aria-busy');
-      if (textEl) textEl.textContent = 'Kirim Pesan';
+      if (textEl) textEl.textContent = 'Kirim Komentar';
     }
   }
 
-  /* ---- Live validation (on blur) ---- */
+  /* ---- Render comments list ---- */
+  function renderComments(commentsListEl, countEl) {
+    if (!commentsListEl) return;
+    const comments = getComments();
 
+    if (countEl) {
+      countEl.textContent = comments.length;
+    }
+
+    if (!comments.length) {
+      commentsListEl.innerHTML = `
+        <div class="comments-empty">
+          <p>Belum ada komentar. Jadilah yang pertama berkomentar!</p>
+        </div>
+      `;
+      return;
+    }
+
+    commentsListEl.innerHTML = comments.map(item => {
+      const initial = (item.name || 'A').trim().charAt(0).toUpperCase();
+      const safeName = escapeHTML(item.name || 'Pengunjung');
+      const safeText = escapeHTML(item.text || '');
+      const timeStr = formatCommentDate(item.date);
+      const badge = item.isOwner
+        ? `<span class="comment-badge">Pemilik</span>`
+        : '';
+
+      return `
+        <article class="comment-item" tabindex="0">
+          <div class="comment-avatar" aria-hidden="true">${initial}</div>
+          <div class="comment-content">
+            <div class="comment-meta">
+              <div class="comment-author-wrapper">
+                <strong class="comment-author">${safeName}</strong>
+                ${badge}
+              </div>
+              <time class="comment-date" datetime="${item.date}">${timeStr}</time>
+            </div>
+            <p class="comment-text">${safeText}</p>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  /* ---- Live validation ---- */
   function attachLiveValidation(form) {
-    const nameInput    = $('#contactName',    form);
-    const emailInput   = $('#contactEmail',   form);
-    const messageInput = $('#contactMessage', form);
+    const nameInput    = $('#commentName',    form) || $('#contactName', form);
+    const commentInput = $('#commentMessage', form) || $('#contactMessage', form);
     const nameError    = $('#nameError',      form);
-    const emailError   = $('#emailError',     form);
-    const messageError = $('#messageError',   form);
+    const commentError = $('#commentError',   form) || $('#messageError', form);
 
     if (nameInput && nameError) {
       nameInput.addEventListener('blur', () => {
@@ -595,144 +708,106 @@ const ContactFormManager = (() => {
       });
     }
 
-    if (emailInput && emailError) {
-      emailInput.addEventListener('blur', () => {
-        setFieldError(emailInput, emailError, validateEmail(emailInput.value));
+    if (commentInput && commentError) {
+      commentInput.addEventListener('blur', () => {
+        setFieldError(commentInput, commentError, validateComment(commentInput.value));
       });
-      emailInput.addEventListener('input', () => {
-        if (emailInput.classList.contains('is-error')) {
-          setFieldError(emailInput, emailError, validateEmail(emailInput.value));
-        }
-      });
-    }
-
-    if (messageInput && messageError) {
-      messageInput.addEventListener('blur', () => {
-        setFieldError(messageInput, messageError, validateMessage(messageInput.value));
-      });
-      messageInput.addEventListener('input', () => {
-        if (messageInput.classList.contains('is-error')) {
-          setFieldError(messageInput, messageError, validateMessage(messageInput.value));
+      commentInput.addEventListener('input', () => {
+        if (commentInput.classList.contains('is-error')) {
+          setFieldError(commentInput, commentError, validateComment(commentInput.value));
         }
       });
     }
   }
 
   function init() {
-    const form = $('#contactForm');
+    const form = $('#commentForm') || $('#contactForm');
+    const commentsListEl = $('#commentsList');
+    const commentsCountEl = $('#commentsCount');
+
+    // Render comments from storage on page load
+    renderComments(commentsListEl, commentsCountEl);
+
     if (!form) return;
 
     attachLiveValidation(form);
 
     form.addEventListener('submit', e => {
-      // Always prevent default first so we can validate
       e.preventDefault();
 
-      const nameInput    = $('#contactName',    form);
-      const emailInput   = $('#contactEmail',   form);
-      const messageInput = $('#contactMessage', form);
+      const nameInput    = $('#commentName',    form) || $('#contactName', form);
+      const commentInput = $('#commentMessage', form) || $('#contactMessage', form);
       const nameError    = $('#nameError',      form);
-      const emailError   = $('#emailError',     form);
-      const messageError = $('#messageError',   form);
+      const commentError = $('#commentError',   form) || $('#messageError', form);
       const feedbackEl   = $('#formFeedback',   form);
       const submitBtn    = $('#submitBtn',      form);
 
-      if (!nameInput || !emailInput || !messageInput) return;
+      if (!nameInput || !commentInput) return;
 
-      // Run all validations
       const nameErr    = validateName(nameInput.value);
-      const emailErr   = validateEmail(emailInput.value);
-      const messageErr = validateMessage(messageInput.value);
+      const commentErr = validateComment(commentInput.value);
 
       setFieldError(nameInput,    nameError,    nameErr);
-      setFieldError(emailInput,   emailError,   emailErr);
-      setFieldError(messageInput, messageError, messageErr);
+      setFieldError(commentInput, commentError, commentErr);
 
-      const hasError = nameErr || emailErr || messageErr;
-
-      if (hasError) {
-        // Focus first field with error
-        if (nameErr)    nameInput.focus();
-        else if (emailErr) emailInput.focus();
-        else            messageInput.focus();
+      if (nameErr || commentErr) {
+        if (nameErr) nameInput.focus();
+        else commentInput.focus();
         return;
       }
 
-      // --- Validation passed ---
+      // Valid: brief feedback state
       setSubmitLoading(submitBtn, true);
 
-      /**
-       * mailto: fallback — opens the user's default email client.
-       * For a real form submission without a backend, replace this
-       * with Formspree: change <form action="https://formspree.io/f/YOUR_ID">
-       * and remove the e.preventDefault() call above. Formspree will
-       * handle everything and show a success page.
-       */
-      const mailtoAction = form.getAttribute('action');
-      const isMailto = mailtoAction && mailtoAction.startsWith('mailto:');
+      setTimeout(() => {
+        const newComment = {
+          id: 'comment-' + Date.now(),
+          name: nameInput.value.trim(),
+          isOwner: false,
+          text: commentInput.value.trim(),
+          date: new Date().toISOString()
+        };
 
-      if (isMailto) {
-        // Build the mailto link with the form data
-        const subject = encodeURIComponent(`Pesan dari ${nameInput.value.trim()}`);
-        const body    = encodeURIComponent(
-          `Nama: ${nameInput.value.trim()}\n` +
-          `Email: ${emailInput.value.trim()}\n\n` +
-          `Pesan:\n${messageInput.value.trim()}`
-        );
-        const mailto = `${mailtoAction}?subject=${subject}&body=${body}`;
+        const currentComments = getComments();
+        currentComments.unshift(newComment);
+        saveComments(currentComments);
 
-        // Small delay for UX
-        setTimeout(() => {
-          setSubmitLoading(submitBtn, false);
-          window.location.href = mailto;
-
-          showFeedback(
-            feedbackEl,
-            'success',
-            '✓ Email client Anda akan terbuka. Silakan kirim pesan dari sana. Terima kasih!'
-          );
-
-          // Reset form
-          form.reset();
-          // Clear any remaining error states
-          [nameInput, emailInput, messageInput].forEach(inp => {
-            inp.classList.remove('is-error');
-            inp.removeAttribute('aria-invalid');
-          });
-          [nameError, emailError, messageError].forEach(el => {
-            if (el) el.textContent = '';
-          });
-        }, 600);
-
-      } else {
-        /**
-         * If using Formspree or another service with fetch API:
-         *
-         * fetch(form.action, {
-         *   method: 'POST',
-         *   body: new FormData(form),
-         *   headers: { 'Accept': 'application/json' }
-         * })
-         * .then(res => res.ok ? res.json() : Promise.reject(res))
-         * .then(() => {
-         *   showFeedback(feedbackEl, 'success', 'Pesan berhasil dikirim!');
-         *   form.reset();
-         * })
-         * .catch(() => {
-         *   showFeedback(feedbackEl, 'error', 'Gagal mengirim. Coba lagi.');
-         * })
-         * .finally(() => setSubmitLoading(submitBtn, false));
-         */
-
-        // Fallback: submit the form normally
+        // Update UI
+        renderComments(commentsListEl, commentsCountEl);
         setSubmitLoading(submitBtn, false);
-        form.submit();
-      }
+
+        showFeedback(
+          feedbackEl,
+          'success',
+          '✓ Komentar Anda berhasil dikirim! Terima kasih atas komentarnya.'
+        );
+
+        // Reset form inputs & errors
+        form.reset();
+        [nameInput, commentInput].forEach(inp => {
+          inp.classList.remove('is-error');
+          inp.removeAttribute('aria-invalid');
+        });
+        [nameError, commentError].forEach(el => {
+          if (el) el.textContent = '';
+        });
+
+        // Automatically hide feedback banner after 6 seconds
+        setTimeout(() => {
+          if (feedbackEl) {
+            feedbackEl.className = 'form-feedback';
+            feedbackEl.textContent = '';
+          }
+        }, 6000);
+      }, 350);
     });
   }
 
   return { init };
 })();
+
+// Backward compatibility alias
+const ContactFormManager = CommentManager;
 
 
 /* ============================================================
@@ -860,7 +935,7 @@ function init() {
   TypingAnimation.init();
   SkillBarAnimator.init();
   CounterAnimator.init();
-  ContactFormManager.init();
+  CommentManager.init();
   setCopyrightYear();
   BackToTopManager.init();
   MicroInteractions.init();
